@@ -11,11 +11,20 @@ http://flynndev.us/projects/jquery-calendar/
 Usage
 -----
 ```
+    // Initialize Calendar
+
     $('.calendar').calendar();
+
+    // Tie Click event to calendar day
+
+    $('.calendar').calendar("addEvent", "March-19-2017", function(){ alert("test"); } );
+
 ```
 
-This project is currently in development and will be documented with all
-options in the future.
+TODO
+----
+* document options
+* re-write js in ES2016 and compile & minify with babel
 
 
 Dependencies
