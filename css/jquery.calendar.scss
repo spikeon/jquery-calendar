@@ -1,0 +1,90 @@
+@import "colors";
+
+$min-width: 320px;
+$number-of-days: 7;
+$column-width: percentage(1/$number-of-days);
+$day_height: 75px;
+
+
+.jquery-calendar {
+  .row {
+	margin: 0;
+	height: $day_height;
+  }
+  
+  .calendar-week .grid-cell {
+	border: 1px solid $grey;
+  }
+  
+  .grid-cell {
+	display: inline-block;
+	float: left;
+	height: 100%;
+	padding: 0;
+	position: relative;
+	width: $column-width;
+	
+	&.previous-month {
+	  color: $grey;
+	  background-color: $bg_grey;
+	}
+	
+	&.next-month {
+	  color: $grey;
+	  background-color: $bg_grey;
+	}
+	
+	.number{
+	  position: absolute;
+	  top: 3px;
+	  left: 3px;
+	  width: 25px;
+	  height: 25px;
+	  line-height: 25px;
+	  text-align: center;
+	}
+	
+	&.events {
+	  &:hover{
+		background: $bg_grey;
+	  }
+	  .number {
+		border: 1px solid $color;
+		line-height: 23px;
+		color: $color;
+	  }
+	  .count{
+		color: $color;
+		text-align: center;
+		text-transform: uppercase;
+		margin-top: ($day_height - 15px) / 2;
+	  }
+	}
+	
+	&.selected{
+	  cursor: pointer;
+	  .number{
+		background: $color;
+		color: white;
+		border: 0;
+	  }
+	}
+	&.today{
+	  .number{
+		background: $highlight;
+		border: 0;
+	  }
+	}
+	
+	
+  }
+  
+  .calendar-week-header{
+	height: auto;
+	.grid-cell {
+	  padding-bottom: 10px;
+	  height: auto;
+	}
+  }
+  
+}

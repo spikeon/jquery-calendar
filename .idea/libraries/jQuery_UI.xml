@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="jQuery UI" type="javaScript">
+    <properties>
+      <option name="frameworkName" value="jQuery UI" />
+      <option name="frameworkVersion" value="1.12.1" />
+    </properties>
+    <CLASSES />
+    <SOURCES />
+  </library>
+</component>

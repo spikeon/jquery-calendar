@@ -1,0 +1,53 @@
+.jquery-calendar .row {
+  margin: 0;
+  height: 75px; }
+.jquery-calendar .calendar-week .grid-cell {
+  border: 1px solid #ccc; }
+.jquery-calendar .grid-cell {
+  display: inline-block;
+  float: left;
+  height: 100%;
+  padding: 0;
+  position: relative;
+  width: 14.28571%; }
+  .jquery-calendar .grid-cell.previous-month {
+    color: #ccc;
+    background-color: #f6f6f6; }
+  .jquery-calendar .grid-cell.next-month {
+    color: #ccc;
+    background-color: #f6f6f6; }
+  .jquery-calendar .grid-cell .number {
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 25px;
+    height: 25px;
+    line-height: 25px;
+    text-align: center; }
+  .jquery-calendar .grid-cell.events:hover {
+    background: #f6f6f6; }
+  .jquery-calendar .grid-cell.events .number {
+    border: 1px solid #558cf6;
+    line-height: 23px;
+    color: #558cf6; }
+  .jquery-calendar .grid-cell.events .count {
+    color: #558cf6;
+    text-align: center;
+    text-transform: uppercase;
+    margin-top: 30px; }
+  .jquery-calendar .grid-cell.selected {
+    cursor: pointer; }
+    .jquery-calendar .grid-cell.selected .number {
+      background: #558cf6;
+      color: white;
+      border: 0; }
+  .jquery-calendar .grid-cell.today .number {
+    background: #fa8f03;
+    border: 0; }
+.jquery-calendar .calendar-week-header {
+  height: auto; }
+  .jquery-calendar .calendar-week-header .grid-cell {
+    padding-bottom: 10px;
+    height: auto; }
+
+/*# sourceMappingURL=jquery.calendar.css.map */
