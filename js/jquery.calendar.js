@@ -1,6 +1,6 @@
 (function ( $ ) {
 
-	$.widget( "nmk.calendar", {
+	$.widget( "spikeon.calendar", {
 		options: {
 			button_style:   'btn btn-primary',
 			previous_html:  $('<i />').addClass('fa fa-chevron-left'),
@@ -11,10 +11,9 @@
 			months:         ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
 			month:          new Date().getMonth(),
 			year:           new Date().getFullYear(),
+			shades:         [],
+			callbacks:      {}
 		},
-
-		_shades : [],
-		_callbacks : {},
 
 		$e : null,
 		$t : null,
@@ -36,10 +35,18 @@
 
 		},
 
+		_setOption: function( key, value ) {
+			this.options[ key ] = value;
+		},
+
+		_destroy: function() {
+			this.element.html( "" );
+		},
+
 		addEvent : function(day, callback){
-			if(this._shades.indexOf(day) == -1) {
-				this._shades.push(day);
-				this._callbacks[day] = callback;
+			if(this.options.shades.indexOf(day) == -1) {
+				this.options.shades.push(day);
+				this.options.callbacks[day] = callback;
 			}
 			this._applyShade();
 		},
@@ -76,7 +83,7 @@
 
 			var that = this;
 
-			this._shades.forEach(function(dayclass){
+			this.options.shades.forEach(function(dayclass){
 
 				var $day = $("." + dayclass, that.$e);
 
@@ -85,7 +92,7 @@
 				$day.unbind();
 
 				$day.click({ 'c' : that},function(e){
-					e.data.callbacks[$(this).data('date')]();
+					e.data.c.options.callbacks[$(this).data('date')]();
 				});
 			});
 
@@ -164,6 +171,5 @@
 		}
 
 	});
-
 
 })(jQuery);
