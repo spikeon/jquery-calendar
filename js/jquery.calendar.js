@@ -2,7 +2,7 @@
 
 	$.widget( "spikeon.calendar", {
 		options: {
-			button_style:   'btn btn-primary',
+			button_style:   'btn btn-primary btn-xs',
 			previous_html:  $('<i />').addClass('fa fa-chevron-left'),
 			next_html:      $('<i />').addClass('fa fa-chevron-right'),
 			title_element:  'h1',
