@@ -4,6 +4,10 @@ jQuery Calendar
 This is a simple calendar with the ability to tie callbacks to dates.
 It includes a header, Month YYYY and previous and next navigation.
 
+Running Example:
+
+http://flynndev.us/projects/jquery-calendar/
+
 Usage
 -----
 ```
