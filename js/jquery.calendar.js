@@ -94,7 +94,6 @@
 				$day.click({ 'c' : that},function(e){
 					e.data.c.options.callbacks[$(this).data('date')]();
 				});
-
 			});
 
 			var d = new Date();
