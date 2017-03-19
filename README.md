@@ -24,8 +24,6 @@ Usage
 TODO
 ----
 * document options
-* re-write js in ES2016 and compile & minify with babel
-
 
 Dependencies
 ------------
