@@ -1,17 +1,10 @@
 module.exports = function(grunt) {
 
+	require('load-grunt-tasks')(grunt);
+
 	// Project configuration.
 	grunt.initConfig({
 		pkg: grunt.file.readJSON('package.json'),
-		uglify: {
-			options: {
-				sourceMap: true
-			},
-			build: {
-				src: 'src/scripts/<%= pkg.name %>.js',
-				dest: 'build/<%= pkg.name %>.min.js'
-			}
-		},
 		sass: {                              // Task
 			dist: {                            // Target
 				options: {                       // Target options
@@ -20,6 +13,17 @@ module.exports = function(grunt) {
 				},
 				files: {                         // Dictionary of files
 					'build/<%= pkg.name %>.min.css' : 'src/styles/<%= pkg.name %>.scss',       // 'destination': 'source'
+				}
+			}
+		},
+		babel: {
+			options: {
+				sourceMap: true,
+				presets: ['es2015', 'babili']
+			},
+			dist: {
+				files: {
+					'build/<%= pkg.name %>.min.js' : 'src/scripts/<%= pkg.name %>.js'
 				}
 			}
 		},
@@ -42,13 +46,9 @@ module.exports = function(grunt) {
 		}
 	});
 
-	// Load the plugin that provides the "uglify" task.
-	grunt.loadNpmTasks('grunt-contrib-uglify');
-	grunt.loadNpmTasks('grunt-contrib-sass');
-	grunt.loadNpmTasks('grunt-banner');
 
 
 	// Default task(s).
-	grunt.registerTask('default', ['uglify', 'sass', 'usebanner']);
+	grunt.registerTask('default', ['babel', 'sass', 'usebanner']);
 
 };
