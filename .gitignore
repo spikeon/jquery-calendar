@@ -72,3 +72,6 @@ fabric.properties
 
 # Node
 node_modules
+
+# SASS
+.sass-cache
