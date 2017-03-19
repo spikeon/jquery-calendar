@@ -4,7 +4,9 @@
   "description": "A simple jQuery UI Widget to create a calendar, and allow you to designate days that have callbacks",
   "main": "index.html",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build" : "grunt",
+    "deploy": "npm run build && git add . && git commit && git push live master"
   },
   "repository": {
     "type": "git",
