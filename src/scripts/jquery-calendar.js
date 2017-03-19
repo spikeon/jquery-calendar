@@ -20,11 +20,11 @@
 
 		_create: function() {
 
-			this.$t = $("<" + this.options.title_element + " />").addClass(this.options.title_class);
+			this.$t = $(`<${this.options.title_element} />`).addClass(this.options.title_class);
 
-			var $prv = $("<button />").addClass(this.options.button_style).addClass('prv').append(this.options.previous_html).click(this.previousMonth.bind(this));
-			var $nxt = $("<button />").addClass(this.options.button_style).addClass('nxt').append(this.options.next_html).click(this.nextMonth.bind(this));
-			var $nav = $("<nav />").append($prv).append($nxt);
+			let $prv = $("<button />").addClass(this.options.button_style).addClass('prv').append(this.options.previous_html).click(this.previousMonth.bind(this));
+			let $nxt = $("<button />").addClass(this.options.button_style).addClass('nxt').append(this.options.next_html).click(this.nextMonth.bind(this));
+			let $nav = $("<nav />").append($prv).append($nxt);
 
 			this.$e = $("<div />").addClass('jquery-calendar');
 
@@ -76,16 +76,16 @@
 		},
 
 		_getDayString : function(m,d,y){
-			return this.options.months[m] + '-' + d + '-' + y;
+			return `${this.options.months[m]}-${d}-${y}`;
 		},
 
 		_applyShade : function(){
 
-			var that = this;
+			let that = this;
 
 			this.options.shades.forEach(function(dayclass){
 
-				var $day = $("." + dayclass, that.$e);
+				let $day = $(`.${dayclass}`, that.$e);
 
 				$day.data('date', dayclass);
 				$day.addClass('events');
@@ -97,15 +97,15 @@
 
 			});
 
-			var d = new Date();
+			let d = new Date();
 
-			var today = this._getDayString(d.getMonth(), d.getDate(), d.getFullYear());
-			$('.' + today, this.$e).addClass('today');
+			let today = this._getDayString(d.getMonth(), d.getDate(), d.getFullYear());
+			$(`.${today}`, this.$e).addClass('today');
 		},
 
 		_showMonth : function(y, m){
 			
-			var
+			let
 				firstDayOfMonth = new Date(y, m, 1).getDay(),
 				lastDateOfMonth =  new Date(y, m+1, 0).getDate(),
 				lastDayOfLastMonth = m == 0 ? new Date(y-1, 11, 0).getDate() : new Date(y, m, 0).getDate();
@@ -114,21 +114,21 @@
 
 			this.$t.html(this.options.months[m] + ' <span class="year">' + y + '</span>');
 
-			var $header = $('<div class="row calendar-week-header"></div>');
-			var $rowtemplate = $('<div class="row calendar-week"></div>');
+			let $header = $('<div class="row calendar-week-header"></div>');
+			let $rowtemplate = $('<div class="row calendar-week"></div>');
 
 			// Write the header of the days of the week
-			for(var i=0; i < this.options.days.length;i++) $header.append('<div class="col-xs-1 grid-cell"><span>' + this.options.days[i] + '</span></div>');
+			for(let i=0; i < this.options.days.length;i++) $header.append('<div class="col-xs-1 grid-cell"><span>' + this.options.days[i] + '</span></div>');
 
 			this.$e.append($header);
 
-			var $row = $rowtemplate.clone(true, true);
+			let $row = $rowtemplate.clone(true, true);
 
 			// Write the days
-			var i = 1;
+			let i = 1;
 			do {
 
-				var dow = new Date(y, m, i).getDay();
+				let dow = new Date(y, m, i).getDay();
 
 				// If Sunday, start new row
 				if ( dow == 0 ) $row = $rowtemplate.clone(true, true);
@@ -138,14 +138,14 @@
 				else if ( i == 1 ) {
 					$row = $rowtemplate.clone(true, true);
 
-					var k = lastDayOfLastMonth - firstDayOfMonth+1;
-					for(var j=0; j < firstDayOfMonth; j++) {
+					let k = lastDayOfLastMonth - firstDayOfMonth+1;
+					for(let j=0; j < firstDayOfMonth; j++) {
 						$row.append('<div class="col-xs-1 grid-cell previous-month"><div class="number">' + k + '</div></div>');
 						k++;
 					}
 				}
 
-				var dayclass = this.options.months[m] + '-' + i + '-' + y;
+				let dayclass = this.options.months[m] + '-' + i + '-' + y;
 
 				// Write the current day in the loop
 				$row.append('<div class="col-xs-1 grid-cell ' + dayclass + '"><div class="number">' + i + '</div></div>');
@@ -156,7 +156,7 @@
 				// If not Saturday, but last day of the selected month
 				// it will write the next few days from the next month
 				else if ( i == lastDateOfMonth ) {
-					var k=1;
+					let k=1;
 					for(dow; dow < 6; dow++) {
 						$row.append('<div class="col-xs-1 grid-cell next-month"><div class="number">' + k + '</div></div>');
 						k++;
