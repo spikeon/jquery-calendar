@@ -19,7 +19,8 @@
 		<script type="text/javascript">
 			(function($) {
 				$('.calendar').calendar();
-				$('.calendar').calendar("addEvent", 'March-19-2017', function(){alert('test');});
+				$('.calendar').addEvent("March-22-2017", function(){alert('String test');});
+				$('.calendar').addEvent(new Date(2017, 2, 25), function(){ alert('Date test') })
 			})(jQuery);
 		</script>
 	</body>

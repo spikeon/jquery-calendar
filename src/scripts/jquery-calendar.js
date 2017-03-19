@@ -31,6 +31,8 @@
 			this.element.html("");
 			this.element.append(this.$t).append($nav).append(this.$e);
 
+			this.element.addClass('calendar-container');
+
 			this._showCurrent();
 
 		},
@@ -44,9 +46,17 @@
 		},
 
 		addEvent : function(day, callback){
-			if(this.options.shades.indexOf(day) == -1) {
-				this.options.shades.push(day);
-				this.options.callbacks[day] = callback;
+
+			let daystring;
+
+			if(day instanceof Date){
+				daystring = this._getDayString(day.getMonth(), day.getDate(), day.getFullYear());
+			}
+			else daystring = day;
+
+			if(this.options.shades.indexOf(daystring) == -1) {
+				this.options.shades.push(daystring);
+				this.options.callbacks[daystring] = callback;
 			}
 			this._applyShade();
 		},
@@ -172,5 +182,12 @@
 		}
 
 	});
+
+	$.fn.addEvent = function(day, callback){
+		if(!$(this).hasClass('calendar-container')) return this;
+		$(this).calendar("addEvent", day, callback);
+		return this;
+	};
+
 
 })(jQuery);
