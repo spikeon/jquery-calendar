@@ -1,0 +1,8 @@
+/* jQuery Calendar
+ * Version: 0.0.8
+ * Date: 03/20/2017
+ * A simple jQuery UI Widget to create a calendar, and allow you to designate days that have callbacks
+ */
+
+.jquery-calendar-container nav{padding-bottom:10px}.jquery-calendar-container nav .nxt{margin-left:10px}.jquery-calendar-container .jquery-calendar .row{margin:0;height:75px}.jquery-calendar-container .jquery-calendar .calendar-week .grid-cell{border:1px solid #ccc}.jquery-calendar-container .jquery-calendar .grid-cell{display:inline-block;float:left;height:100%;padding:0;position:relative;width:14.28571%}.jquery-calendar-container .jquery-calendar .grid-cell.previous-month{color:#ccc;background-color:#f6f6f6}.jquery-calendar-container .jquery-calendar .grid-cell.next-month{color:#ccc;background-color:#f6f6f6}.jquery-calendar-container .jquery-calendar .grid-cell .number{color:#000;position:absolute;top:0;left:0;width:30px;height:30px;line-height:30px;text-align:center}.jquery-calendar-container .jquery-calendar .grid-cell.events{cursor:pointer;background:#b6cefb}.jquery-calendar-container .jquery-calendar .grid-cell.events:hover{background:#558cf6}.jquery-calendar-container .jquery-calendar .grid-cell.events .number{background:#558cf6;color:#fff;border:0}.jquery-calendar-container .jquery-calendar .grid-cell.today .number{background:#fa8f03;color:#000;border:0}.jquery-calendar-container .jquery-calendar .calendar-week-header{height:auto}.jquery-calendar-container .jquery-calendar .calendar-week-header .grid-cell{padding-bottom:10px;height:auto}
+/*# sourceMappingURL=jquery-calendar.min.css.map */

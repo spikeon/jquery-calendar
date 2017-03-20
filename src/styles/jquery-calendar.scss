@@ -6,80 +6,86 @@ $column-width: percentage(1/$number-of-days);
 $day_height: 75px;
 $number_border_size: 1px;
 $number_size: 30px;
-
-.jquery-calendar {
-  
-  .row {
-	margin: 0;
-	height: $day_height;
+.jquery-calendar-container {
+  nav {
+	padding-bottom: 10px;
+	.nxt {
+	  margin-left: 10px;
+	}
   }
-  
-  .calendar-week .grid-cell {
-	border: 1px solid $grey;
-  }
-  
-  .grid-cell {
-	display: inline-block;
-	float: left;
-	height: 100%;
-	padding: 0;
-	position: relative;
-	width: $column-width;
+  .jquery-calendar {
 	
-	&.previous-month {
-	  color: $grey;
-	  background-color: $bg_grey;
+	.row {
+	  margin: 0;
+	  height: $day_height;
 	}
 	
-	&.next-month {
-	  color: $grey;
-	  background-color: $bg_grey;
+	.calendar-week .grid-cell {
+	  border: 1px solid $grey;
 	}
 	
-	.number{
-	  color: $day_color;
-	  position: absolute;
-	  top: 0;
-	  left: 0;
-	  width: $number_size;
-	  height: $number_size;
-	  line-height: $number_size;
-	  text-align: center;
-	}
-	
-	&.events {
-	  
-	  &:hover{
-		background: $selected_bg;
-	  }
-	  
-	  cursor: pointer;
-	  background: lighten($selected_bg, 20);
-
-	  .number{
-		background: $selected_bg;
-		color: $selected_fg;
-		border: 0;
-	  }
-	}
-	
-	&.today{
-	  .number{
-		background: $today_bg;
-		color: $today_fg;
-		border: 0;
-	  }
-	}
-	
-	
-  }
-  
-  .calendar-week-header{
-	height: auto;
 	.grid-cell {
-	  padding-bottom: 10px;
-	  height: auto;
+	  display: inline-block;
+	  float: left;
+	  height: 100%;
+	  padding: 0;
+	  position: relative;
+	  width: $column-width;
+	  
+	  &.previous-month {
+		color: $grey;
+		background-color: $bg_grey;
+	  }
+	  
+	  &.next-month {
+		color: $grey;
+		background-color: $bg_grey;
+	  }
+	  
+	  .number {
+		color: $day_color;
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: $number_size;
+		height: $number_size;
+		line-height: $number_size;
+		text-align: center;
+	  }
+	  
+	  &.events {
+		
+		&:hover {
+		  background: $selected_bg;
+		}
+		
+		cursor: pointer;
+		background: lighten($selected_bg, 20);
+		
+		.number {
+		  background: $selected_bg;
+		  color: $selected_fg;
+		  border: 0;
+		}
+	  }
+	  
+	  &.today {
+		.number {
+		  background: $today_bg;
+		  color: $today_fg;
+		  border: 0;
+		}
+	  }
+	  
 	}
+	
+	.calendar-week-header {
+	  height: auto;
+	  .grid-cell {
+		padding-bottom: 10px;
+		height: auto;
+	  }
+	}
+	
   }
-  
 }

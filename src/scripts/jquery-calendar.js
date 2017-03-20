@@ -31,7 +31,7 @@
 			this.element.html("");
 			this.element.append(this.$t).append($nav).append(this.$e);
 
-			this.element.addClass('calendar-container');
+			this.element.addClass('jquery-calendar-container');
 
 			this._showCurrent();
 
@@ -184,7 +184,7 @@
 	});
 
 	$.fn.addEvent = function(day, callback){
-		if(!$(this).hasClass('calendar-container')) return this;
+		if(!$(this).hasClass('jquery-calendar-container')) return this;
 		$(this).calendar("addEvent", day, callback);
 		return this;
 	};

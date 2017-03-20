@@ -12,7 +12,7 @@ module.exports = function(grunt) {
 					loadPath: 'src/styles/'
 				},
 				files: {                         // Dictionary of files
-					'build/<%= pkg.name %>.min.css' : 'src/styles/<%= pkg.name %>.scss',       // 'destination': 'source'
+					'dist/<%= pkg.name %>.min.css' : 'src/styles/<%= pkg.name %>.scss',       // 'destination': 'source'
 				}
 			}
 		},
@@ -23,7 +23,7 @@ module.exports = function(grunt) {
 			},
 			dist: {
 				files: {
-					'build/<%= pkg.name %>.min.js' : 'src/scripts/<%= pkg.name %>.js'
+					'dist/<%= pkg.name %>.min.js' : 'src/scripts/<%= pkg.name %>.js'
 				}
 			}
 		},
@@ -40,7 +40,7 @@ module.exports = function(grunt) {
 					banner: '<%= banner %>'
 				},
 				files: {
-					src: [ 'build/*.js', 'build/*.css']
+					src: [ 'dist/*.js', 'dist/*.css']
 				}
 			}
 		}
