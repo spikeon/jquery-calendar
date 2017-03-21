@@ -1,6 +1,6 @@
 {
   "name": "jquery-callback-calendar",
-  "version": "1.0.10",
+  "version": "1.0.11",
   "description": "A simple jQuery UI Widget to create a calendar, and allow you to designate days that have callbacks",
   "main": "index.html",
   "keywords": "jquery-plugin calendar month",
@@ -8,9 +8,9 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "prepublish": "git add . && git commit && npm version patch",
     "postpublish": "npm run push",
-    "preversion" : "",
-    "postversion" : "npm run build && git add . && git commit -m \"Updating version\"",
-    "push" : "git push && git push live && git push --tags && git push --tags",
+    "preversion": "",
+    "postversion": "npm run build && git add . && git commit -m \"Updating version\"",
+    "push": "git push && git push live && git push --tags && git push --tags",
     "build": "grunt",
     "deploy": ""
   },
