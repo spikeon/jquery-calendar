@@ -1,21 +1,24 @@
 {
   "name": "jquery-callback-calendar",
-  "version": "1.0.0",
+  "version": "1.0.4",
   "description": "A simple jQuery UI Widget to create a calendar, and allow you to designate days that have callbacks",
   "main": "index.html",
   "keywords": "jquery-plugin calendar month",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "prepublish": "npm-auto-version",
-    "postpublish": "git push origin --tags",
+    "prepublish": "npm-auto-version && npm run deploy",
+    "postpublish": "git push && git push live && git push --tags && git push --tags",
     "build": "grunt",
-    "deploy": "npm run build && git add . && git commit && git push live master"
+    "deploy": "npm run build && git add . && git commit"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/spikeon/jquery-calendar.git"
   },
-  "author": "Michael Flynn <mflynn@flynndev.us>",
+  "author": {
+    "name": "Michael Flynn",
+    "email": "mflynn@flynndev.us"
+  },
   "license": "GPL-3.0",
   "bugs": {
     "url": "https://github.com/spikeon/jquery-calendar/issues"
@@ -33,5 +36,11 @@
     "grunt-contrib-uglify": "~0.5.0",
     "load-grunt-tasks": "3.5.2",
     "npm-auto-version": "1.0.0"
+  },
+  "peerDependencies": {
+    "bootstrap": "3.3.7",
+    "font-awesome": "4.7.0",
+    "jquery": "3.2.1",
+    "jquery-ui": "1.12.1"
   }
 }

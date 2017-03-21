@@ -21,10 +21,19 @@
 		<script type="text/javascript" src="dist/jquery-callback-calendar.min.js"></script>
 
 		<script type="text/javascript">
+
+			/* This is an example */
+
 			(function($) {
+				/* Initialize Calendar */
 				$('.calendar').calendar();
+
+				/* Add event with string */
 				$('.calendar').addEvent("March-22-2017", function(){ alert('String test'); });
-				$('.calendar').addEvent(new Date(2017, 2, 25), function(){ alert('Date test') })
+
+				/* Add event with Date object */
+				$('.calendar').addEvent(new Date(2017, 2, 25), function(){ alert('Date test') });
+
 			})(jQuery);
 		</script>
 	</body>
