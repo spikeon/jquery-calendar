@@ -1,11 +1,13 @@
 {
-  "name": "jquery-calendar",
-  "version": "0.0.8",
+  "name": "jquery-callback-calendar",
+  "version": "1.0.0",
   "description": "A simple jQuery UI Widget to create a calendar, and allow you to designate days that have callbacks",
   "main": "index.html",
-  "keywords" : "jquery-plugin calendar month",
+  "keywords": "jquery-plugin calendar month",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "prepublish": "npm-auto-version",
+    "postpublish": "git push origin --tags",
     "build": "grunt",
     "deploy": "npm run build && git add . && git commit && git push live master"
   },
@@ -29,6 +31,7 @@
     "grunt-contrib-nodeunit": "~0.4.1",
     "grunt-contrib-sass": "1.0.0",
     "grunt-contrib-uglify": "~0.5.0",
-    "load-grunt-tasks": "3.5.2"
+    "load-grunt-tasks": "3.5.2",
+    "npm-auto-version": "1.0.0"
   }
 }

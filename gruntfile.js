@@ -12,7 +12,7 @@ module.exports = function(grunt) {
 					loadPath: 'src/styles/'
 				},
 				files: {                         // Dictionary of files
-					'dist/<%= pkg.name %>.min.css' : 'src/styles/<%= pkg.name %>.scss',       // 'destination': 'source'
+					'dist/<%= pkg.name %>.min.css' : 'src/styles/main.scss',       // 'destination': 'source'
 				}
 			}
 		},
@@ -23,7 +23,7 @@ module.exports = function(grunt) {
 			},
 			dist: {
 				files: {
-					'dist/<%= pkg.name %>.min.js' : 'src/scripts/<%= pkg.name %>.js'
+					'dist/<%= pkg.name %>.min.js' : 'src/scripts/main.js'
 				}
 			}
 		},
