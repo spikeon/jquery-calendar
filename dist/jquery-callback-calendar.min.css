@@ -1,5 +1,5 @@
 /* jQuery Callback Calendar
- * Version: 1.0.11
+ * Version: 1.0.12
  * Date: 03/21/2017
  * A simple jQuery UI Widget to create a calendar, and allow you to designate days that have callbacks
  */
