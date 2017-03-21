@@ -1,6 +1,6 @@
 {
   "name": "jquery-callback-calendar",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "A simple jQuery UI Widget to create a calendar, and allow you to designate days that have callbacks",
   "main": "index.html",
   "keywords": "jquery-plugin calendar month",

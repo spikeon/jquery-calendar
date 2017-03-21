@@ -1,18 +1,23 @@
 @import "colors";
 
-$min-width: 320px;
-$number-of-days: 7;
-$column-width: percentage(1/$number-of-days);
-$day_height: 75px;
-$number_border_size: 1px;
-$number_size: 30px;
+@import "structure";
+
 .jquery-calendar-container {
+  
   nav {
+	
 	padding-bottom: 10px;
+	
+	.prv {
+	
+	}
+	
 	.nxt {
 	  margin-left: 10px;
 	}
+	
   }
+  
   .jquery-calendar {
 	
 	.row {
@@ -32,14 +37,11 @@ $number_size: 30px;
 	  position: relative;
 	  width: $column-width;
 	  
-	  &.previous-month {
-		color: $grey;
-		background-color: $bg_grey;
-	  }
-	  
-	  &.next-month {
-		color: $grey;
-		background-color: $bg_grey;
+	  &.previous-month, &.next-month {
+		.number {
+		  color: $dark_grey;
+		}
+		background-color: $bg_dark_grey;
 	  }
 	  
 	  .number {
@@ -60,7 +62,7 @@ $number_size: 30px;
 		}
 		
 		cursor: pointer;
-		background: lighten($selected_bg, 20);
+		background: $bg_grey;
 		
 		.number {
 		  background: $selected_bg;

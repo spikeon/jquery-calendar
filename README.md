@@ -31,6 +31,9 @@ Options
 
 | Option | Description | Default Value |
 | --- | --- | --- |
+| month | Month Shown on Calendar; a number between 0 and 11 | `new Date().getMonth() // Dynamic Current Month` |
+| year | Year Shown on Calendar (YYYY) | `new Date().getFullYear() // Dynamic Current Year` |
+| square | Boolean.  Enable or disable js that makes grid items square  dynamically | `true` |
 | button_style | CSS Class on next and previous buttons | `btn btn-primary btn-xs` |
 | previous_html | HTML in previous button | Font Awesome Chevron Left |
 | next_html | HTML in next button | Font Awesome Chevron Right |
@@ -38,8 +41,6 @@ Options
 | title_class | CSS Class for title | `ttl` |
 | days | Array of day names, starting with Sunday | ` ['Sun','Mon','Tue','Wed','Thu','Fri','Sat']` |
 | months | Array of month names | `['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']` |
-| month | Month Shown on Calendar; a number between 0 and 11 | `new Date().getMonth() // Dynamic Current Month` |
-| year | Year Shown on Calendar (YYYY) | `new Date().getFullYear() // Dynamic Current Year` |
 
 
 Dependencies

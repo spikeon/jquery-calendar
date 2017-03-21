@@ -12,7 +12,8 @@
 			month:          new Date().getMonth(),
 			year:           new Date().getFullYear(),
 			shades:         [],
-			callbacks:      {}
+			callbacks:      {},
+			square:         true
 		},
 
 		$e : null,
@@ -113,6 +114,12 @@
 			$(`.${today}`, this.$e).addClass('today');
 		},
 
+		_makeSquare : function(){
+			if(!this.options.square) return;
+			let width = $('.grid-cell', this.$e).first().width();
+			$('.row', this.$e).not('.calendar-week-header').height(width);
+		},
+
 		_showMonth : function(y, m){
 			
 			let
@@ -179,6 +186,7 @@
 
 			this._applyShade();
 
+			this._makeSquare();
 		}
 
 	});
