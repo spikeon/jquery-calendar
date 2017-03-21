@@ -28,7 +28,7 @@ module.exports = function(grunt) {
 			}
 		},
 		banner:
-			'/* jQuery Calendar\n' +
+			'/* jQuery Callback Calendar\n' +
 			' * Version: <%= pkg.version %>\n' +
 			' * Date: <%= grunt.template.today("mm/dd/yyyy") %>\n' +
 			' * <%= pkg.description %>\n'+
