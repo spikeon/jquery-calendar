@@ -39,6 +39,10 @@ Options
 | next_html | HTML in next button | Font Awesome Chevron Right |
 | title_element | HTML element for title | `h1` |
 | title_class | CSS Class for title | `ttl` |
+| day_class | CSS Class for days | `col-xs-1` |
+| day_header_class | CSS Class for day headers | `col-xs-1` |
+| week_class | Class for week | `row` |
+| week_header_class | Class for week header | `row` |
 | days | Array of day names, starting with Sunday | ` ['Sun','Mon','Tue','Wed','Thu','Fri','Sat']` |
 | months | Array of month names | `['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']` |
 

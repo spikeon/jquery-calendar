@@ -26,7 +26,9 @@
 	}
 	
 	.calendar-week .grid-cell {
+	  
 	  border: 1px solid $grey;
+	  
 	}
 	
 	.grid-cell {
@@ -38,17 +40,22 @@
 	  width: $column-width;
 	  
 	  &.previous-month, &.next-month {
+		
+		background-color: $bg_dark_grey;
+		
 		.number {
 		  color: $dark_grey;
 		}
-		background-color: $bg_dark_grey;
+		
 	  }
 	  
 	  .number {
 		color: $day_color;
+		
 		position: absolute;
 		top: 0;
 		left: 0;
+		
 		width: $number_size;
 		height: $number_size;
 		line-height: $number_size;
@@ -69,6 +76,7 @@
 		  color: $selected_fg;
 		  border: 0;
 		}
+		
 	  }
 	  
 	  &.today {
