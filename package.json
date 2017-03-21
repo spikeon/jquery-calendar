@@ -9,7 +9,7 @@
     "prepublish": "npm run deploy",
     "postpublish": "git push && git push live && git push --tags && git push --tags",
     "build": "grunt",
-    "deploy": "git add . && git commit && npm version patch -m \"updating to %s\" && npm run build"
+    "deploy": "git add . && git commit && npm version patch -m \"updating to %s\" && npm run build && git add . && git commit -m \"Updating version\""
   },
   "repository": {
     "type": "git",
