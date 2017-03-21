@@ -34,6 +34,10 @@
 				/* Add event with Date object */
 				$('.calendar').addEvent(new Date(2017, 2, 25), function(){ alert('Date test') });
 
+				/* Add event with Date object on several days in the current month */
+				[2,3,5,6,8,12,24, 30].forEach(function(i, day){ $('.calendar').addEvent(new Date(2017, new Date().getMonth(), day), function(){ alert('Date test') }); });
+
+
 			})(jQuery);
 		</script>
 	</body>
