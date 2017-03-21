@@ -27,8 +27,8 @@
 
 			this.$t = $(`<${this.options.title_element} />`).addClass(this.options.title_class);
 
-			let $prv = $("<button />").addClass(this.options.button_style).addClass('prv').append(this.options.previous_html).click(() => { this.previousMonth; });
-			let $nxt = $("<button />").addClass(this.options.button_style).addClass('nxt').append(this.options.next_html).click(() => { this.nextMonth; });
+			let $prv = $("<button />").addClass(this.options.button_style).addClass('prv').append(this.options.previous_html).click(() => { this.previousMonth(); });
+			let $nxt = $("<button />").addClass(this.options.button_style).addClass('nxt').append(this.options.next_html).click(() => { this.nextMonth(); });
 			let $nav = $("<nav />").append($prv).append($nxt);
 
 			this.$e = $("<div />").addClass('jquery-calendar');
@@ -96,21 +96,16 @@
 
 		_applyShade: function () {
 
-			let that = this;
+			for(let day of this.options.shades){
 
-			this.options.shades.forEach(function (dayclass) {
+				let $day = $(`.${day}`, this.$e);
 
-				let $day = $(`.${dayclass}`, that.$e);
-
-				$day.data('date', dayclass);
 				$day.addClass('events');
 				$day.unbind();
 
-				$day.click({'c': that}, function (e) {
-					e.data.c.options.callbacks[$(this).data('date')]();
-				});
+				$day.click( () => { this.options.callbacks[day](); });
 
-			});
+			}
 
 			let d = new Date();
 
@@ -158,20 +153,20 @@
 
 					let k = lastDayOfLastMonth - firstDayOfMonth + 1;
 					for (let j = 0; j < firstDayOfMonth; j++) {
-						$row.append($('<div />').addClass(this.options.day_class).addClass('grid-cell').addClass('previous-month').append($('<div />').text(k)));
+						$row.append($('<div />').addClass(this.options.day_class).addClass('grid-cell').addClass('previous-month').append($('<div />').addClass('number').text(k)));
 						k++;
 					}
 				}
 
 				let dayclass = this._getDayString(m, i, y);
 
-				$row.append($('<div />').addClass(this.options.day_class).addClass('grid-cell').append($('<div />').text(i)));
+				$row.append($('<div />').addClass(this.options.day_class).addClass(dayclass).addClass('grid-cell').append($('<div />').addClass('number').text(i)));
 
 				if (dow == 6) this.$e.append($row);
 				else if (i == lastDateOfMonth) {
 					let k = 1;
 					for (dow; dow < 6; dow++) {
-						$row.append($('<div />').addClass(this.options.day_class).addClass('grid-cell').addClass('next-month').append($('<div />').text(k)));
+						$row.append($('<div />').addClass(this.options.day_class).addClass('grid-cell').addClass('next-month').append($('<div />').addClass('number').text(k)));
 						k++;
 					}
 					this.$e.append($row);
