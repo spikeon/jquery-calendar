@@ -31,18 +31,27 @@
 		_create: function () {
 			this.$t = $(`<${this.options.title_element} />`).addClass(this.options.title_class);
 
-			let $prv = $("<button />").addClass(this.options.button_style).addClass('prv').append(this.options.previous_html).click(() => {
-				this.previousMonth();
-			});
-			let $nxt = $("<button />").addClass(this.options.button_style).addClass('nxt').append(this.options.next_html).click(() => {
-				this.nextMonth();
-			});
+			let $prv = $("<button />")
+					.addClass(this.options.button_style)
+					.addClass('prv')
+					.append(this.options.previous_html)
+					.click(() => { this.previousMonth(); }),
+
+				$nxt = $("<button />")
+					.addClass(this.options.button_style)
+					.addClass('nxt')
+					.append(this.options.next_html)
+					.click(() => { this.nextMonth(); });
+
 			let $nav = $("<nav />").append($prv).append($nxt);
 
 			this.$e = $("<div />").addClass('jquery-calendar');
 
 			this.element.html("");
-			this.element.append(this.$t).append($nav).append(this.$e);
+			this.element
+				.append(this.$t)
+				.append($nav)
+				.append(this.$e);
 
 			this.element.addClass('jquery-calendar-container');
 
