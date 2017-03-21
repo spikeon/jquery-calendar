@@ -6,10 +6,10 @@
   "keywords": "jquery-plugin calendar month",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "prepublish": "npm-auto-version && npm run deploy",
+    "prepublish": "npm run deploy",
     "postpublish": "git push && git push live && git push --tags && git push --tags",
     "build": "grunt",
-    "deploy": "npm run build && git add . && git commit"
+    "deploy": "git add . && git commit && npm version patch -m \"updating to %s\" && npm run build"
   },
   "repository": {
     "type": "git",
