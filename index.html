@@ -25,20 +25,58 @@
 			/* This is an example */
 
 			(function($) {
+
+				function modal_alert(title, message, date) {
+					var $m = $('.modal');
+					$('h4', $m).text(title);
+					$('.content', $m).text(message);
+					$('.kill-event', $m).unbind().click(function (date) {
+						$('.calendar').removeEvent(date);
+					}.bind(this, date));
+					$m.modal('show');
+				}
+
 				/* Initialize Calendar */
 				$('.calendar').calendar();
 
 				/* Add event with string */
-				$('.calendar').addEvent("March-22-2017", function(){ alert('String test'); });
+				$('.calendar').addEvent("March-22-2017", function(){
+					modal_alert("String Test", "This is a test of the string alert system", "March-22-2017");
+				});
 
 				/* Add event with Date object */
-				$('.calendar').addEvent(new Date(2017, 2, 25), function(){ alert('Date test') });
+				$('.calendar').addEvent(new Date(2017, 2, 25), function(){
+					modal_alert("Date Test", "This is a test of the Date alert system", new Date(2017, 2, 25));
+				});
 
 				/* Add event with Date object on several days in the current month */
-				[2,3,5,6,8,12,24, 30].forEach(function(i, day){ $('.calendar').addEvent(new Date(2017, new Date().getMonth(), i), function(){ alert('Date test') }); });
-
+				[2,3,5,6,8,12,24, 30].forEach(function(day){
+					var d = new Date(2017, new Date().getMonth(), day);
+					$('.calendar').addEvent(d, function(d){
+						modal_alert("Dynamic Date Test", "This is a test of the date alert system.  The day is: " + d.getDate() + ".", d);
+					}.bind(this, d));
+				});
 
 			})(jQuery);
 		</script>
+
+		<div class="modal fade" tabindex="-1" role="dialog">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<h4 class="modal-title">Modal title</h4>
+					</div>
+					<div class="modal-body">
+						<p class="content">One fine body&hellip;</p>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-danger kill-event" data-dismiss="modal">Remove Event</button>
+						<button type="button" class="btn btn-primary" data-dismiss="modal">Ok</button>
+					</div>
+				</div><!-- /.modal-content -->
+			</div><!-- /.modal-dialog -->
+		</div><!-- /.modal -->
+
 	</body>
 </html>

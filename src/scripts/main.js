@@ -1,6 +1,8 @@
 (function ($) {
 
-	$.widget("spikeon.calendar", {
+	$.widget("flynndev.calendar", {
+
+		/** Options */
 		options: {
 			button_style: 'btn btn-primary btn-xs',
 			previous_html: $('<i />').addClass('fa fa-chevron-left'),
@@ -20,15 +22,21 @@
 			week_header_class: 'row',
 		},
 
+		/** Element */
 		$e: null,
+
+		/** Title */
 		$t: null,
 
 		_create: function () {
-
 			this.$t = $(`<${this.options.title_element} />`).addClass(this.options.title_class);
 
-			let $prv = $("<button />").addClass(this.options.button_style).addClass('prv').append(this.options.previous_html).click(() => { this.previousMonth(); });
-			let $nxt = $("<button />").addClass(this.options.button_style).addClass('nxt').append(this.options.next_html).click(() => { this.nextMonth(); });
+			let $prv = $("<button />").addClass(this.options.button_style).addClass('prv').append(this.options.previous_html).click(() => {
+				this.previousMonth();
+			});
+			let $nxt = $("<button />").addClass(this.options.button_style).addClass('nxt').append(this.options.next_html).click(() => {
+				this.nextMonth();
+			});
 			let $nav = $("<nav />").append($prv).append($nxt);
 
 			this.$e = $("<div />").addClass('jquery-calendar');
@@ -42,21 +50,49 @@
 
 		},
 
+		/**
+		 * Set Option
+		 * @param {string} key
+		 * @param {*} value
+		 * @private
+		 */
 		_setOption: function (key, value) {
 			this.options[key] = value;
 		},
 
+		/**
+		 * Get Option
+		 * @param {string} key
+		 * @returns {*}
+		 * @private
+		 */
+		_getOption: function (key) {
+			return this.options[key];
+		},
+
+		/**
+		 * Destroy
+		 *
+		 * Cleanup after yourself
+		 *
+		 * @private
+		 */
 		_destroy: function () {
 			this.element.html("");
 		},
 
+		/**
+		 * Add Event
+		 *
+		 * @param {(string|Date)} day
+		 * @param {function} callback
+		 * @return {void}
+		 */
 		addEvent: function (day, callback) {
 
 			let daystring;
 
-			if (day instanceof Date) {
-				daystring = this._getDayString(day.getMonth(), day.getDate(), day.getFullYear());
-			}
+			if (day instanceof Date) daystring = this._getDayString(day.getMonth(), day.getDate(), day.getFullYear());
 			else daystring = day;
 
 			if (this.options.shades.indexOf(daystring) == -1) {
@@ -64,46 +100,105 @@
 				this.options.callbacks[daystring] = callback;
 			}
 			this._applyShade();
+
 		},
 
+		/**
+		 * Remove Event
+		 *
+		 * @param {(string|Date)} day
+		 * @return {void}
+		 */
+		removeEvent: function (day) {
+			let daystring;
+
+			if (day instanceof Date) daystring = this._getDayString(day.getMonth(), day.getDate(), day.getFullYear());
+			else daystring = day;
+
+			let index = this.options.shades.indexOf(daystring);
+
+			this.options.shades.splice(index, 1);
+			this.options.callbacks[daystring] = undefined;
+
+			$('.events', this.$e).removeClass('events').unbind();
+
+			this._applyShade();
+		},
+
+		/**
+		 * Next Month
+		 */
 		nextMonth: function () {
-			if (this.options.month == 11) {
-				this.options.month = 0;
-				this.options.year = this.options.year + 1;
-			}
-			else this.options.month = this.options.month + 1;
-
-			this._showCurrent();
+			if (this.options.month == 11) this.setMonth(0, this.options.year + 1);
+			else this.setMonth(this.options.month + 1);
 		},
 
+
+		/**
+		 * Previous Month
+		 */
 		previousMonth: function () {
-			if (this.options.month == 0) {
-				this.options.month = 11;
-				this.options.year = this.options.year - 1;
+			if (this.options.month == 0) this.setMonth(11, this.options.year - 1);
+			else this.setMonth(this.options.month - 1);
+		},
+
+		/**
+		 * Set Month
+		 * @param {int} month
+		 * @param {int=} year
+		 */
+		setMonth: function (month, year) {
+			if (!Number.isInteger(month) || month > 11 || month < 0) console.error("Invalid Month");
+			else this._setOption('month', month);
+
+			if (year) {
+				if (!Number.isInteger(year) || year > 2100 || year < 1980) console.error("Invalid Year");
+				else this._setOption('year', year);
 			}
-			else this.options.month = this.options.month - 1;
 
 			this._showCurrent();
+
 		},
 
+		/**
+		 * Show Current Month
+		 *
+		 * @private
+		 */
 		_showCurrent: function () {
-			this._showMonth(this.options.year, this.options.month);
+			this._showMonth(this.options.month, this.options.year);
 		},
 
-		_getDayString: function (m, d, y) {
-			return `${this.options.months[m]}-${d}-${y}`;
+		/**
+		 * Get Day String
+		 *
+		 * @param {int} month
+		 * @param {int} day
+		 * @param {int} year
+		 * @returns {string}
+		 * @private
+		 */
+		_getDayString: function (month, day, year) {
+			return `${this.options.months[month]}-${day}-${year}`;
 		},
 
+		/**
+		 * Apply Shade
+		 *
+		 * @private
+		 */
 		_applyShade: function () {
 
-			for(let day of this.options.shades){
+			for (let day of this.options.shades) {
 
 				let $day = $(`.${day}`, this.$e);
 
 				$day.addClass('events');
 				$day.unbind();
 
-				$day.click( () => { this.options.callbacks[day](); });
+				$day.click(() => {
+					this.options.callbacks[day]();
+				});
 
 			}
 
@@ -113,24 +208,34 @@
 			$(`.${today}`, this.$e).addClass('today');
 		},
 
+		/**
+		 * Make Square
+		 *
+		 * @private
+		 */
 		_makeSquare: function () {
 			if (!this.options.square) return;
 			let width = $('.grid-cell', this.$e).first().width();
 			$('.row', this.$e).not('.calendar-week-header').height(width);
 		},
 
-
-
-		_showMonth: function (y, m) {
+		/**
+		 * Show Month
+		 *
+		 * @param {int} month
+		 * @param {int} year
+		 * @private
+		 */
+		_showMonth: function (month, year) {
 
 			let
-				firstDayOfMonth = new Date(y, m, 1).getDay(),
-				lastDateOfMonth = new Date(y, m + 1, 0).getDate(),
-				lastDayOfLastMonth = m == 0 ? new Date(y - 1, 11, 0).getDate() : new Date(y, m, 0).getDate();
+				firstDayOfMonth = new Date(year, month, 1).getDay(),
+				lastDateOfMonth = new Date(year, month + 1, 0).getDate(),
+				lastDayOfLastMonth = month == 0 ? new Date(year - 1, 11, 0).getDate() : new Date(year, month, 0).getDate();
 
 			this.$e.html("");
 
-			this.$t.html(this.options.months[m] + ' <span class="year">' + y + '</span>');
+			this.$t.html(this.options.months[month] + ' <span class="year">' + year + '</span>');
 
 			let $header = $('<div />').addClass(this.options.week_header_class).addClass('calendar-week-header');
 
@@ -138,14 +243,14 @@
 
 			for (let day of this.options.days) $header.append($('<div />').addClass(this.options.day_header_class).addClass('grid-cell').append($('<span />').text(day)));
 
-
 			this.$e.append($header);
 
 			let $row = $rowtemplate.clone(true, true);
 
 			let i = 1;
+
 			do {
-				let dow = new Date(y, m, i).getDay();
+				let dow = new Date(year, month, i).getDay();
 
 				if (dow == 0) $row = $rowtemplate.clone(true, true);
 				else if (i == 1) {
@@ -158,7 +263,7 @@
 					}
 				}
 
-				let dayclass = this._getDayString(m, i, y);
+				let dayclass = this._getDayString(month, i, year);
 
 				$row.append($('<div />').addClass(this.options.day_class).addClass(dayclass).addClass('grid-cell').append($('<div />').addClass('number').text(i)));
 
@@ -182,11 +287,45 @@
 
 	});
 
+	/**
+	 * Add Event
+	 *
+	 * Add event to the calendar
+	 *
+	 * @param {(string|Date)} day
+	 * @param {function} callback
+	 * @returns {jQuery}
+	 */
 	$.fn.addEvent = function (day, callback) {
 		if (!$(this).hasClass('jquery-calendar-container')) return this;
 		$(this).calendar("addEvent", day, callback);
 		return this;
 	};
 
+	/**
+	 * Remove Event
+	 *
+	 * Remove an event from the calendar
+	 *
+	 * @param {(string|Date)}day
+	 * @returns {jQuery}
+	 */
+	$.fn.removeEvent = function (day) {
+		if (!$(this).hasClass('jquery-calendar-container')) return this;
+		$(this).calendar("removeEvent", day);
+		return this;
+	};
+
+	/**
+	 * Set Month
+	 *
+	 * @param {int} month
+	 * @param {int=} year
+	 */
+	$.fn.setMonth = function (month, year) {
+		if (!$(this).hasClass('jquery-calendar-container')) return this;
+		$(this).calendar("setMonth", month, year);
+		return this;
+	};
 
 })(jQuery);
