@@ -50,11 +50,6 @@
     "jquery": "3.2.1",
     "jquery-ui": "1.12.1"
   },
-  "apidoc": {
-    "name": "Portfolio API",
-    "title": "Portfolio API",
-    "url": "http://flynndev.us/api"
-  },
   "githuburl": "https://github.com/spikeon/jquery-calendar",
   "npmurl": "https://www.npmjs.com/package/jquery-callback-calendar",
   "liveurl": "http://flynndev.us/projects/jquery-calendar",
@@ -64,6 +59,9 @@
     "jQuery",
     "Node.js",
     "jQuery UI",
-    "ES2015"
+    "ES2015",
+    "NPM",
+    "Font Awesome"
+
   ]
 }
