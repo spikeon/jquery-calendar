@@ -1,7 +1,7 @@
 {
   "name": "jquery-callback-calendar",
   "version": "1.0.16",
-  "description": "A simple jQuery UI Widget to create a calendar, and allow you to designate days that have callbacks",
+  "description": "jQuery Callback Calendar",
   "main": "index.html",
   "keywords": [
     "jquery-plugin",
@@ -49,5 +49,23 @@
     "font-awesome": "4.7.0",
     "jquery": "3.2.1",
     "jquery-ui": "1.12.1"
-  }
+  },
+  "apidoc": {
+    "name": "Portfolio API",
+    "title": "Portfolio API",
+    "url": "http://flynndev.us/api"
+  },
+  "githuburl" : "https://github.com/spikeon/jquery-calendar",
+  "npmurl" : "https://www.npmjs.com/package/jquery-callback-calendar",
+  "liveurl": "http://flynndev.us/projects/jquery-calendar",
+  "featured": true,
+  "tags": [
+    "Bootstrap",
+    "jQuery",
+    "Node.js",
+    "jQuery UI",
+    "ES2016"
+
+
+  ]
 }
