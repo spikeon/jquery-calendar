@@ -1,5 +1,5 @@
 /* jQuery Callback Calendar
- * Version: 1.0.19
+ * Version: 1.0.20
  * Date: 03/22/2017
  * jQuery Callback Calendar
  */
